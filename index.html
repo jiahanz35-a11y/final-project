@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Jiahan Zhang — Portfolio</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ========== GLOBAL ========== */
+* { box-sizing: border-box; margin:0; padding:0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Lato', sans-serif;
+  background: #F6F3EE;
+  color: #3A3A3A;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* 1200px centered wrapper visible area */
+.wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/* navigation */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: rgba(250,246,240,0.9);
+  border-bottom: 1px solid #E8E2D9;
+  backdrop-filter: blur(6px);
+}
+.header-inner { width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding:18px 0; }
+.brand { font-family:'Playfair Display', serif; font-size:20px; color:#2C2420; font-weight:700; text-decoration:none; }
+.nav { display:flex; gap:20px; }
+.nav a { color:#6B5E55; text-decoration:none; font-weight:600; letter-spacing:0.6px; padding:8px 12px; border-radius:10px; }
+.nav a:hover, .nav a.active { color:#D48C70; background: rgba(212,140,112,0.06); }
+
+/* hero */
+.hero { display:flex; gap:48px; padding:84px 0 60px; align-items:center; }
+.avatar {
+  width:300px; height:300px; border-radius:24px; object-fit:cover;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+}
+.hero-text h1 { font-family:'Playfair Display', serif; font-size:44px; color:#2C2420; margin-bottom:8px; }
+.hero-text p { color:#5a4f48; font-size:18px; margin-bottom:12px; }
+.cta { display:inline-block; padding:12px 24px; background:#C69A61; color:#fff; border-radius:14px; text-decoration:none; font-weight:700; }
+
+/* sections */
+.section { padding:64px 0; border-top: 1px solid #efe8dd; }
+.section .title { font-family:'Playfair Display', serif; font-size:34px; margin-bottom:12px; text-align:center; color:#2C2420; position:relative; }
+.section .title::after { content:''; display:block; width:60px; height:2px; background:#D48C70; margin:14px auto 0; }
+
+/* about */
+.about { display:flex; gap:40px; padding:28px 0 0; }
+.about .left { flex:1; }
+.about .right { width:360px; background:#fff; padding:18px; border-radius:14px; box-shadow:0 12px 30px rgba(0,0,0,0.06); }
+
+/* projects index grid */
+.projects-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:28px; margin-top:28px; }
+.project-card {
+  background:#FAF7F2; padding:18px; border-radius:16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06), inset 0 0 0 1px #E6DCCF;
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+.project-card:hover { transform: translateY(-8px); box-shadow: 0 22px 48px rgba(0,0,0,0.10); }
+.project-card img { width:100%; height:220px; object-fit:cover; border-radius:12px; margin-bottom:12px; cursor:pointer; }
+.project-card h3 { font-family:'Playfair Display', serif; margin-bottom:6px; color:#2C2420; }
+.project-card p { color:#5a4f48; font-size:15px; margin-bottom:10px; }
+
+/* project summary table */
+.summary-table { width:100%; border-collapse:collapse; margin-top:14px; }
+.summary-table th { text-align:left; padding:12px; border-bottom:2px solid #E9E0D7; font-family:'Playfair Display', serif; color:#2C2420; }
+.summary-table td { padding:12px; border-bottom:1px solid #F0EAE4; color:#6B5E55; }
+
+/* case-study wrapper */
+.case { background: #fff; padding:28px; border-radius:16px; box-shadow: 0 18px 40px rgba(0,0,0,0.06); margin-bottom:32px; }
+.cs-hero { display:flex; gap:24px; align-items:flex-start; margin-bottom:16px; }
+.cs-hero img { width:420px; border-radius:12px; object-fit:cover; box-shadow:0 12px 30px rgba(0,0,0,0.08); }
+.cs-meta { flex:1; }
+.badge { display:inline-block; background:#F6EEE3; color:#9E7350; padding:6px 10px; border-radius:999px; font-weight:700; margin-bottom:12px; }
+
+/* subsections in case study */
+.cs-section { margin-top:18px; }
+.cs-grid { display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top:12px; }
+.card { background:#FAF7F2; padding:14px; border-radius:12px; box-shadow: 0 10px 26px rgba(0,0,0,0.05); }
+
+/* persona card */
+.persona { display:flex; gap:14px; align-items:center; padding:12px; border-radius:12px; background:#fff; box-shadow:0 8px 20px rgba(0,0,0,0.05); }
+.persona img { width:96px; height:96px; border-radius:12px; object-fit:cover; }
+
+/* user flow image */
+.flow { width:100%; height:280px; object-fit:cover; border-radius:12px; }
+
+/* wireframes grid */
+.wireframes { display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-top:14px; }
+.wireframes img { width:100%; height:180px; object-fit:cover; border-radius:10px; }
+
+/* final ui previews */
+.final-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-top:12px; }
+.final-grid img { width:100%; height:220px; object-fit:cover; border-radius:12px; }
+
+/* reflections */
+.reflection { font-style:italic; color:#66544A; margin-top:12px; }
+
+/* contact / footer */
+.contact-card { background:#fff; padding:20px; border-radius:12px; box-shadow:0 10px 26px rgba(0,0,0,0.05); text-align:center; }
+
+/* lightbox */
+.lb-root { display:none; position:fixed; inset:0; background:rgba(20,20,20,0.8); backdrop-filter: blur(6px); align-items:center; justify-content:center; z-index:3000; padding:20px; }
+.lb-inner { max-width:1100px; width:100%; display:flex; align-items:center; gap:24px; }
+.lb-inner img { max-width:100%; max-height:80vh; border-radius:12px; box-shadow:0 30px 80px rgba(0,0,0,0.6); }
+.lb-close { position:absolute; top:24px; right:36px; font-size:36px; color:#fff; cursor:pointer; }
+
+/* small screens helper (still desktop target) */
+@media (max-width: 1200px) {
+  .wrapper { width: calc(100% - 48px); padding:0 24px; }
+  .hero { flex-direction:column; align-items:flex-start; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .cs-hero { flex-direction:column; }
+  .cs-hero img { width:100%; }
+  .cs-grid { grid-template-columns: 1fr; }
+  .wireframes { grid-template-columns: repeat(2,1fr); }
+  .final-grid { grid-template-columns: repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <a class="brand" href="#home">Jiahan Zhang</a>
+    <nav class="nav">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <!-- HOME / HERO -->
+  <section id="home" class="section hero" aria-label="Home">
+    <img src="images/TODO-your-photo.jpg" alt="Jiahan portrait" class="avatar" />
+    <div class="hero-text">
+      <h1>Hi, I'm <span style="color:#C69A61; font-family:'Playfair Display',serif;">Jiahan Zhang</span></h1>
+      <p>Global Business & Digital Arts (Marketing + UI/UX) student at University of Waterloo. I design human-centered products and craft brand stories that connect with people.</p>
+      <p>Selected focus areas: <strong>Service Design</strong> · <strong>UX Research</strong> · <strong>UI Design</strong> · <strong>Product Thinking</strong></p>
+      <a class="cta" href="#projects">View Projects</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="title">About</div>
+    <div class="about">
+      <div class="left">
+        <p>I'm a student and designer blending strategy and craft. My background includes marketing internships at Henkel and social media product roles, plus hands-on UX work in design jams and prototypes. I care about designing products that are simple, accessible, and empathetic.</p>
+        <p>Technical & design skills: Figma, Adobe Suite, HTML/CSS, Swift (basic), prototyping, user research, service design.</p>
+        <h3>Education</h3>
+        <p>University of Waterloo — Global Business & Digital Arts (Marketing & UI/UX). GPA 3.8/4.0</p>
+      </div>
+
+      <aside class="right">
+        <div style="font-weight:700; margin-bottom:10px;">Contact</div>
+        <div style="color:#6B5E55; margin-bottom:8px;">Email: <a href="mailto:j372zhan@uwaterloo.ca">j372zhan@uwaterloo.ca</a></div>
+        <div style="color:#6B5E55; margin-bottom:8px;">Phone: (437)-665-0221</div>
+        <div style="margin-top:10px;">
+          <a href="#projects" class="cta" style="padding:10px 16px;">See work</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PROJECTS INDEX -->
+  <section id="projects" class="section">
+    <div class="title">Projects</div>
+    <p style="text-align:center; color:#6B5E55; margin-top:8px;">Click a project to view the full case study below.</p>
+
+    <div class="projects-grid">
+      <!-- Project: Sun Life -->
+      <div class="project-card" onclick="scrollToId('cs-sunlife')">
+        <img src="images/TODO-sunlife-cover.jpg" alt="Sun Life Design Jam Cover" />
+        <h3>Sun Life — Design Jam: Lumi</h3>
+        <p>Service design & UX for chronic care — onboarding, medication management, and community supports.</p>
+        <table class="summary-table">
+          <tr><th>Role</th><td>UX Research & Product Design</td></tr>
+          <tr><th>Tools</th><td>Figma, Miro, User Interviews</td></tr>
+          <tr><th>Duration</th><td>48hr Design Jam (Oct 2025)</td></tr>
+        </table>
+      </div>
+
+      <!-- Project: UW Stratford Housing -->
+      <div class="project-card" onclick="scrollToId('cs-housing')">
+        <img src="images/TODO-housing-cover.jpg" alt="UW Stratford Housing App Cover" />
+        <h3>UW Stratford — Student Housing App</h3>
+        <p>Designing a rental assistance app to help University of Waterloo students find and manage housing.</p>
+        <table class="summary-table">
+          <tr><th>Role</th><td>UX Designer</td></tr>
+          <tr><th>Tools</th><td>Figma, User Flows</td></tr>
+          <tr><th>Duration</th><td>Project Sprint (2025)</td></tr>
+        </table>
+      </div>
+
+      <!-- Project: HOOGA Singapore Redesign -->
+      <div class="project-card" onclick="scrollToId('cs-hooga')">
+        <img src="images/TODO-hooga-cover.jpg" alt="HOOGA Homepage Redesign Cover" />
+        <h3>HOOGA Singapore — Homepage Redesign</h3>
+        <p>Figma redesign for an e-commerce brand—Scandinavian minimal aesthetic and accessible product pages.</p>
+        <table class="summary-table">
+          <tr><th>Role</th><td>UI Designer</td></tr>
+          <tr><th>Tools</th><td>Figma, Adobe Suite</td></tr>
+          <tr><th>Duration</th><td>Design Challenge (2025)</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       CASE STUDY: SUN LIFE (FULL)
+       =========================== -->
+  <section id="cs-sunlife" class="section">
+    <div class="title">Sun Life — Lumi (Design Jam)</div>
+
+    <div class="case">
+      <div class="cs-hero">
+        <img src="images/TODO-sunlife-hero.jpg" alt="Lumi hero" />
+        <div class="cs-meta">
+          <div class="badge">Design Jam • Service Design</div>
+          <h2>Lumi — A Virtual Caregiver for Chronic Patients</h2>
+          <p><strong>Problem:</strong> Fragmented chronic care, older patients overwhelmed with medication and appointments.</p>
+          <p><strong>My role:</strong> UX research, service blueprint, onboarding flow, hi-fi screens.</p>
+          <p><strong>Outcome:</strong> Prototype for hospital onboarding with Sun Life integration and trusted-contact system.</p>
+        </div>
+      </div>
+
+      <!-- Problem space -->
+      <div class="cs-section">
+        <h3>Problem space & Context</h3>
+        <p>Ontario’s aging population and rising chronic illness rates place significant strain on hospitals. Patients like Ruth (67, diabetes + hypertension) often lack a coordinated care plan, leading to missed medication, repeated ER visits, and anxiety. Sun Life and Waterloo Hospital sought solutions to improve continuity, benefits understanding, and daily management.</p>
+      </div>
+
+      <!-- Research -->
+      <div class="cs-section cs-grid">
+        <div class="card">
+          <h4>Research</h4>
+          <p>Methods: rapid interviews with stakeholders, service audit, claims data review (Sun Life reports), and competitor scan for digital chronic-care tools.</p>
+          <ul>
+            <li>Interviews with seniors highlighted confusion around refills and transportation.</li>
+            <li>Staff interviews emphasized discharge friction and paperwork overload.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Key Insights</h4>
+          <ul>
+            <li>Human onboarding reduces tech anxiety.</li>
+            <li>Trusted contact increases adherence and reduces loneliness.</li>
+            <li>Syncing with benefits (Sun Life) and pharmacies reduces refill errors.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Persona -->
+      <div class="cs-section">
+        <h4>Persona</h4>
+        <div class="persona">
+          <img src="images/TODO-ruth.jpg" alt="Ruth persona" />
+          <div>
+            <h4>Ruth — Isolated Senior (67)</h4>
+            <p>Lives alone, newly diagnosed with diabetes and hypertension. Overwhelmed by appointments, medication schedules, and hospital paperwork. Wants clarity and a trusted helper.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- User flow -->
+      <div class="cs-section">
+        <h4>User flow</h4>
+        <img class="flow" src="images/TODO-sunlife-flow.jpg" alt="user flow">
+        <p style="color:#6B5E55; margin-top:8px;">Hospital referral → Onboarding specialist → QR code link → App setup → Medication sync → App reminders & trusted contact updates.</p>
+      </div>
+
+      <!-- Features & Service blueprint -->
+      <div class="cs-section cs-grid">
+        <div class="card">
+          <h4>Core Features</h4>
+          <ul>
+            <li>Human onboarding specialist (in-person first consult)</li>
+            <li>QR-based secure profile linking to hospital records</li>
+            <li>Medication schedule with Sun Life prescription sync</li>
+            <li>Appointment booking + transport coordination</li>
+            <li>Trusted contact updates and voice assistant</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Service Blueprint (summary)</h4>
+          <p>Hospital staff initiate referral → Sun Life onboarding team connects → Patient setup with QR → Ongoing digital reminders + human check-ins for 30 days → Escalation to care coordinator if missed medication/appointments.</p>
+        </div>
+      </div>
+
+      <!-- Wireframes -->
+      <div class="cs-section">
+        <h4>Wireframes</h4>
+        <div class="wireframes">
+          <img src="images/TODO-sunlife-wire1.jpg" alt="wireframe1">
+          <img src="images/TODO-sunlife-wire2.jpg" alt="wireframe2">
+          <img src="images/TODO-sunlife-wire3.jpg" alt="wireframe3">
+        </div>
+      </div>
+
+      <!-- Final UI -->
+      <div class="cs-section">
+        <h4>Final UI / Prototype</h4>
+        <div class="final-grid">
+          <img src="images/TODO-sunlife-ui1.jpg" alt="ui1">
+          <img src="images/TODO-sunlife-ui2.jpg" alt="ui2">
+          <img src="images/TODO-sunlife-ui3.jpg" alt="ui3">
+        </div>
+      </div>
+
+      <!-- Reflection -->
+      <div class="cs-section">
+        <h4>Reflection</h4>
+        <p class="reflection">This rapid design jam reinforced the importance of starting with human trust — a design that introduces a human first dramatically increases adoption among older users. Future work: pilot at Waterloo Hospital and connect to live pharmacy refill APIs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       CASE STUDY: UW STRATFORD HOUSING
+       =========================== -->
+  <section id="cs-housing" class="section">
+    <div class="title">UW Stratford — Student Housing App</div>
+
+    <div class="case">
+      <div class="cs-hero">
+        <img src="images/TODO-housing-hero.jpg" alt="Housing hero" />
+        <div class="cs-meta">
+          <div class="badge">Project Sprint • UX</div>
+          <h2>UW Haven — Rental Assistance for Students</h2>
+          <p><strong>Problem:</strong> Students struggle to find affordable, reliable housing quickly and manage leases and roommate communication.</p>
+          <p><strong>My role:</strong> UX design, user research, prototyping.</p>
+          <p><strong>Outcome:</strong> Prototype app for simplified search, verified listings, and roommate-matching tools.</p>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h3>Problem space</h3>
+        <p>University students face housing shortages, scams, transport barriers, and difficulty understanding lease terms. Students off-campus (esp. international) are especially vulnerable.</p>
+      </div>
+
+      <div class="cs-section cs-grid">
+        <div class="card">
+          <h4>Research & Methods</h4>
+          <ul>
+            <li>Surveys with 40 students on pain points</li>
+            <li>Competitive analysis of rental apps (Kijiji, Facebook Marketplace)</li>
+            <li>Expert interview with campus housing office</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Key Findings</h4>
+          <ul>
+            <li>Trust & verification are top priorities</li>
+            <li>Students need flexible lease filters and transport-aware searches</li>
+            <li>Simple roommate matching reduced friction</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h4>Persona</h4>
+        <div class="persona">
+          <img src="images/TODO-student.jpg" alt="Student persona" />
+          <div>
+            <h4>Sam — International Student (21)</h4>
+            <p>New to Canada, limited local network, seeks verified listings and clear lease guidance.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h4>User Journey</h4>
+        <img class="flow" src="images/TODO-housing-flow.jpg" alt="housing user flow">
+        <p style="color:#6B5E55; margin-top:8px;">Search → Verification & chat → Lease templates → Move-in checklist → Support resources</p>
+      </div>
+
+      <div class="cs-section cs-grid">
+        <div class="card">
+          <h4>Key Features</h4>
+          <ul>
+            <li>Verified landlord badges</li>
+            <li>Map + transit-aware search</li>
+            <li>Lease guidance & templated messages</li>
+            <li>Roommate matching and split-bills helper</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Impact Metrics (Proposed)</h4>
+          <ul>
+            <li>Reduce scam incidents by 40%</li>
+            <li>Increase verified listing clicks by 30%</li>
+            <li>Decrease lease misunderstanding disputes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h4>Wireframes & Flows</h4>
+        <div class="wireframes">
+          <img src="images/TODO-housing-wire1.jpg" alt="wire1">
+          <img src="images/TODO-housing-wire2.jpg" alt="wire2">
+          <img src="images/TODO-housing-wire3.jpg" alt="wire3">
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h4>High-fidelity Screens</h4>
+        <div class="final-grid">
+          <img src="images/TODO-housing-ui1.jpg" alt="ui1">
+          <img src="images/TODO-housing-ui2.jpg" alt="ui2">
+          <img src="images/TODO-housing-ui3.jpg" alt="ui3">
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h4>Reflection</h4>
+        <p class="reflection">Designing for students requires balancing trust signals with a lightweight experience. Next steps include a usability test with 8–10 students and integrating campus housing resources for verification flows.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       CASE STUDY: HOOGA HOMEPAGE REDESIGN
+       =========================== -->
+  <section id="cs-hooga" class="section">
+    <div class="title">HOOGA Singapore — Homepage Redesign</div>
+
+    <div class="case">
+      <div class="cs-hero">
+        <img src="images/TODO-hooga-hero.jpg" alt="Hooga hero" />
+        <div class="cs-meta">
+          <div class="badge">UI / E-commerce Redesign</div>
+          <h2>HOOGA — Scandinavian-inspired Homepage</h2>
+          <p><strong>Problem:</strong> The original homepage lacks visual hierarchy and a clear store navigation for local Singapore customers.</p>
+          <p><strong>My role:</strong> Visual design, component system, product page layout.</p>
+          <p><strong>Outcome:</strong> Redesigned homepage focusing on warm neutrals, clear CTAs, and an improved store locator page.</p>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h4>Brief & Goals</h4>
+        <p>Goal: Create a modern, minimal, Scandinavian-inspired homepage for HOOGA Singapore. Improve product discoverability and emphasize store locations and promotions.</p>
+      </div>
+
+      <div class="cs-section cs-grid">
+        <div class="card">
+          <h4>Design System</h4>
+          <p>Color palette: warm beiges, muted browns, cream. Typography: Playfair Display for headlines, Lato for body.</p>
+          <p>Components: hero card, product card, store locator, promotion banner, and accessible footer.</p>
+        </div>
+        <div class="card">
+          <h4>Approach</h4>
+          <ol>
+            <li>Audit existing page & analytics</li>
+            <li>Sketch new layout & components</li>
+            <li>Build hi-fi in Figma</li>
+            <li>Prototype interactions & handoff</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h4>UI Explorations</h4>
+        <div class="wireframes">
+          <img src="images/TODO-hooga-ex1.jpg" alt="exploration1">
+          <img src="images/TODO-hooga-ex2.jpg" alt="exploration2">
+          <img src="images/TODO-hooga-ex3.jpg" alt="exploration3">
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h4>Final Homepage</h4>
+        <div class="final-grid">
+          <img src="images/TODO-hooga-ui1.jpg" alt="ui1">
+          <img src="images/TODO-hooga-ui2.jpg" alt="ui2">
+          <img src="images/TODO-hooga-ui3.jpg" alt="ui3">
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h4>Reflection</h4>
+        <p class="reflection">A strong visual system and thoughtful spacing improves product focus and conversions. The next step would be an A/B test of hero variants and store-locator prominence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="title">Contact</div>
+    <div style="display:flex; gap:24px; align-items:center; justify-content:center; margin-top:18px;">
+      <div style="max-width:720px;">
+        <p style="text-align:center; color:#5a4f48;">I'm currently open to internships and collaborations. Feel free to reach out.</p>
+        <div style="display:flex; gap:12px; justify-content:center; margin-top:12px;">
+          <a class="cta" href="mailto:j372zhan@uwaterloo.ca">Email Me</a>
+          <a class="cta" href="images/TODO-SunLife_UW_Stratford_DesignJam_2025-2026_V2.pdf" target="_blank" style="background:#fff; color:#C69A61; border:2px solid #C69A61;">Download Mockups</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding:36px 0; text-align:center; color:#6b6b6b;">
+    © 2025 Jiahan Zhang — Global Business & Digital Arts • University of Waterloo
+  </footer>
+
+</div> <!-- /wrapper -->
+
+<!-- LIGHTBOX -->
+<div id="lb" class="lb-root" onclick="closeLB()">
+  <div class="lb-inner" onclick="event.stopPropagation()">
+    <img id="lb-img" src="" alt="large image">
+  </div>
+  <div class="lb-close" onclick="closeLB()">✕</div>
+</div>
+
+<script>
+/* Smooth scroll helper for project cards */
+function scrollToId(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* Lightbox functions - open when clicking images in case studies or project cards */
+function openLB(src){
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeLB(){
+  document.getElementById('lb').style.display = 'none';
+  document.getElementById('lb-img').src = '';
+  document.body.style.overflow = '';
+}
+
+/* Add click handlers for all images that should open in lightbox */
+document.addEventListener('click', function(e){
+  // Images with src containing TODO- or images/ ... we only open if user clicked specifically project / cs images
+  if(e.target && e.target.tagName === 'IMG' && e.target.src && e.target.src.includes('images/')) {
+    // If image is a tiny thumbnail used for layout (like avatar) we don't open; only open large project images
+    // We'll check for file naming convention: images/TODO-*-cover.jpg or TODO-*-ui.jpg etc open LB
+    const src = e.target.getAttribute('src');
+    if(src && (src.includes('TODO-') || src.includes('project') || src.includes('ui') || src.includes('hero') || src.includes('wire'))) {
+      openLB(src);
+    }
+  }
+});
+
+/* Highlight nav active link on scroll (simple) */
+const navLinks = document.querySelectorAll('.nav a');
+const sections = ['home','about','projects','cs-sunlife','cs-housing','cs-hooga','contact'];
+window.addEventListener('scroll', function(){
+  const offset = window.scrollY + 120;
+  sections.forEach(id=>{
+    const sec = document.getElementById(id);
+    if(!sec) return;
+    if(sec.offsetTop <= offset && (sec.offsetTop + sec.offsetHeight) > offset) {
+      navLinks.forEach(a=> a.classList.remove('active'));
+      const link = document.querySelector('.nav a[href="#'+id+'"]');
+      if(link) link.classList.add('active');
+    }
+  });
+});
+
+/* Ensure clicking a project card doesn't trigger lightbox (we use onclick to scroll) */
+const projectCards = document.querySelectorAll('.project-card');
+projectCards.forEach(card => {
+  card.addEventListener('click', function(e){
+    // Only handle left click and not when clicking an image that opens LB
+    if(e.target && e.target.tagName === 'IMG') return; // image click handled separately
+    // Else, we already bound onclick attribute to scrollToId in HTML; this prevents double handling.
+  });
+});
+</script>
+
+</body>
+</html>
+
