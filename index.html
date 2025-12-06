@@ -63,6 +63,11 @@ body {
 .about .left { flex:1; }
 .about .right { width:360px; background:#fff; padding:18px; border-radius:14px; box-shadow:0 12px 30px rgba(0,0,0,0.06); }
 
+  
+  
+  
+  
+  
 /* projects index grid */
 .projects-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:28px; margin-top:28px; }
 .project-card {
@@ -134,15 +139,13 @@ body {
 </head>
 <body>
 
-<div class="header">
-  <div class="header-inner">
-    <a class="brand" href="#home">Jiahan Zhang</a>
-    <nav class="nav">
-      <a href="#home" class="active">Home</a>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<nav class="nav">
+  <a href="#home" class="active">Home</a>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#contact">Contact</a>
+</nav>
   </div>
 </div>
 
@@ -503,6 +506,95 @@ body {
     </div>
   </section>
 
+  <!-- 更新后的导航栏（加入 experience） -->
+<div class="header">
+  <div class="header-inner">
+    <a class="brand" href="#home">Jiahan Zhang</a>
+    <nav class="nav">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <!-- HOME remains same... -->
+  <!-- ABOUT remains same... -->
+
+  <!-- ===========================
+       EXPERIENCE — Timeline
+       =========================== -->
+  <section id="experience" class="section">
+    <div class="title">Experience</div>
+
+    <div style="max-width:900px; margin:40px auto;">
+
+      <!-- ITEM 1 -->
+      <div style="display:flex; gap:24px; margin-bottom:40px;">
+        <div style="width:160px; text-align:right; color:#A7896F; font-weight:700;">
+          Jan 2025 – Apr 2025
+        </div>
+        <div style="flex:1; background:#fff; padding:20px; border-radius:14px; box-shadow:0 14px 34px rgba(0,0,0,0.06);">
+          <h3 style="font-family:'Playfair Display', serif; margin-bottom:6px;">Assistant Marketing Manager</h3>
+          <div style="font-weight:600; color:#8A6F55; margin-bottom:10px;">Henkel — Schwarzkopf (China)</div>
+          <ul style="color:#5a4f48; line-height:1.6; padding-left:20px;">
+            <li>Supported the 0–1 development of a Schwarzkopf shampoo line through research, achieving a 15% above-forecast trial rate.</li>
+            <li>Analyzed 30+ SKUs, identifying minimalist packaging & scalp care trends that increased ad CTR by 13%.</li>
+            <li>Coordinated with 3 agencies to deliver 20+ launch assets, generating 2M+ impressions in week 1.</li>
+            <li>Boosted 618 campaign sales by 25% via promotional shoots & influencer collaboration.</li>
+            <li>Oversaw 40+ approvals and streamlined internal communication, improving efficiency by 20%.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ITEM 2 -->
+      <div style="display:flex; gap:24px; margin-bottom:40px;">
+        <div style="width:160px; text-align:right; color:#A7896F; font-weight:700;">
+          Sep 2023 – Dec 2023
+        </div>
+        <div style="flex:1; background:#fff; padding:20px; border-radius:14px; box-shadow:0 14px 34px rgba(0,0,0,0.06);">
+          <h3 style="font-family:'Playfair Display', serif; margin-bottom:6px;">Social Media Marketing & Design Specialist</h3>
+          <div style="font-weight:600; color:#8A6F55; margin-bottom:10px;">Meiluo Trading Co., Ltd.</div>
+          <ul style="color:#5a4f48; line-height:1.6; padding-left:20px;">
+            <li>Developed brand storytelling for jewelry collection, enhancing perceived value.</li>
+            <li>Used AI tools to batch-create posters & videos, achieving 87% conversion and ¥60K GMV in the first month.</li>
+            <li>Reduced production costs by 7.5% through supplier comparison on 1688 & Pinduoduo.</li>
+            <li>Expanded category offerings, increasing AOV from ¥200 to ¥500 and boosting GMV to ¥200K.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ITEM 3 -->
+      <div style="display:flex; gap:24px; margin-bottom:40px;">
+        <div style="width:160px; text-align:right; color:#A7896F; font-weight:700;">
+          May 2022 – Aug 2022
+        </div>
+        <div style="flex:1; background:#fff; padding:20px; border-radius:14px; box-shadow:0 14px 34px rgba(0,0,0,0.06);">
+          <h3 style="font-family:'Playfair Display', serif; margin-bottom:6px;">Sales Assistant</h3>
+          <div style="font-weight:600; color:#8A6F55; margin-bottom:10px;">Rimer Industrial Co., Ltd.</div>
+          <ul style="color:#5a4f48; line-height:1.6; padding-left:20px;">
+            <li>Coordinated procurement & logistics for FAW-Volkswagen + Audi A4L, achieving 100% on-time delivery.</li>
+            <li>Translated 30+ technical documents, reducing errors by 16%.</li>
+            <li>Produced weekly workflow reports improving visibility and reducing processing time by 15%.</li>
+            <li>Maintained a 98% client satisfaction rate through strong communication.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  
+  
+  
+  
+  
+  
+  
   <!-- CONTACT -->
   <section id="contact" class="section">
     <div class="title">Contact</div>
